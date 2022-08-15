@@ -11,7 +11,7 @@ const server = http.createServer(app)
 
 const io = new Server(server, {
   cors: {
-    origin: 'https://eriksend.com',
+    origin: ['https://eriksend.com', 'https://chat.eriksend.com'],
     methods: ['GET', 'POST']
   }
 })
