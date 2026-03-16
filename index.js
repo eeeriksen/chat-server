@@ -46,7 +46,7 @@ bot.on('message', (msg) => {
   if (messageText && String(msg.chat.id) === String(chatId)) {
     const chatMsg = {
       id: 'telegram',
-      username: 'TelegramBot',
+      username: 'Eriksen (Telegram)',
       message: messageText
     }
     io.in('main').emit('updateConversation', chatMsg)
@@ -69,7 +69,7 @@ io.on('connection', (socket) => {
     }
     io.in(room).emit('updateConversation', msg)
 
-    if (username !== 'TelegramBot') {
+    if (username !== 'Eriksen (Telegram)') {
       bot.sendMessage(chatId, `${username}: ${message}`)
     }
   })
