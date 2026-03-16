@@ -1,9 +1,13 @@
 const express = require('express')
+const dotenv = require('dotenv')
 const app = express()
 const http = require('http')
 const cors = require('cors')
 const { Server } = require('socket.io')
 const TelegramBot = require('node-telegram-bot-api')
+
+dotenv.config({ path: `.env.${process.env.NODE_ENV || 'development'}` })
+
 const { addUser, getUser, getUsers, removeUser } = require('./src/users')
 
 const token = process.env.VITE_TELEGRAM_BOT_TOKEN
@@ -76,7 +80,7 @@ io.on('connection', (socket) => {
   })
 })
 
-const port = 3006
+const port = process.env.PORT || 3006
 
 server.listen(port, () => {
   console.log(`Server running in port ${port}`)
